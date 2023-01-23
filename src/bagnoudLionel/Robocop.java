@@ -40,21 +40,17 @@ public class Robocop extends AdvancedRobot {
 			System.out.println("Turn " + turn);	
 			setColors(Color.black,Color.black,Color.blue);
 			radar.turnRadar();
-			tank.move();
-			setColors(Color.black,Color.black,Color.red);
+			radar.getRadarDegrees();
+			System.out.println(degrees);
 			canon.turnCannon();
+			setColors(Color.black,Color.black,Color.red);
 			// Perform any actions we planned this turn
 			execute();
 		}
 	}
 	
-	public void onScannedRobot(ScannedRobotEvent event) {
-		System.out.println("gatcha");
-		radar.getRadarDegrees(degrees);
-		System.out.println(degrees);
-		fire(3);
-		//canon.setCanonReady();
-	}
+	
+
 	
 	public void onWin(WinEvent e) {
 		// Victory dance

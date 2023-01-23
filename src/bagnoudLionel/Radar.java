@@ -1,9 +1,17 @@
 package bagnoudLionel;
 
+import robocode.ScannedRobotEvent;
 
 public class Radar {
-	private double radarDirection;
 	private Robocop robot;
+	private double radarDirection;
+	private boolean enemySpotted = false;
+	
+
+	
+	public Radar() {
+	}
+	
 	
 	Robocop robocop = new Robocop();
 	
@@ -12,19 +20,26 @@ public class Radar {
 		}
 	
 	
-	
 	public void turnRadar() {
 			robot.turnRadarLeft(90.0);
-			System.out.println("I'm scannin'");
+				radarDirection = robot.getRadarHeading();
+				enemySpotted = true;
+				System.out.println("radarDirection " + radarDirection + " and enemySpotted is " + enemySpotted);
 			}
 
-	
-	public double getRadarDegrees(double radarDirection) {
-			radarDirection = robot.getRadarHeading();
-			this.radarDirection = radarDirection;
-			return radarDirection;
+	//Getter
+	public double getRadarDegrees() {
+		return radarDirection;
 			}
-	
+
+	//Setter
+	public void setRadarDegrees(double radarDirection) {
+		this.radarDirection = radarDirection;
 	}
 	
-
+	public void onScannedRobot(ScannedRobotEvent event) {
+		turnRadar();
+		
+	}
+	
+}
