@@ -1,7 +1,5 @@
 package bagnoudLionel;
 
-import robocode.ScannedRobotEvent;
-
 public class Radar {
 	private Robocop robot;
 	private double radarDirection;
@@ -21,25 +19,16 @@ public class Radar {
 	
 	
 	public void turnRadar() {
-			robot.turnRadarLeft(90.0);
+			if (enemySpotted) {
 				radarDirection = robot.getRadarHeading();
-				enemySpotted = true;
 				System.out.println("radarDirection " + radarDirection + " and enemySpotted is " + enemySpotted);
+				enemySpotted = false;
 			}
-
-	//Getter
-	public double getRadarDegrees() {
-		return radarDirection;
-			}
-
-	//Setter
-	public void setRadarDegrees(double radarDirection) {
-		this.radarDirection = radarDirection;
+			robot.turnRadarLeft(90.0);
 	}
 	
-	public void onScannedRobot(ScannedRobotEvent event) {
-		turnRadar();
-		
+	public void setEnemySpotted(boolean enemySpotted) {
+		this.enemySpotted = enemySpotted;
 	}
 	
 }
