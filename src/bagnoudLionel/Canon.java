@@ -1,22 +1,25 @@
 package bagnoudLionel;
-import robocode.util.*;
-import robocode.*;
-import java.awt.Color;
+
+
 
 public class Canon {
+	
+	private Radar radar;
+	
 	 Robocop robot = new Robocop();
-	 Radar radar = new Radar();
-
+	 
+	 double imShooting;
 	
+	public Canon(Robocop robot, Radar radar) {
+		this.robot = robot;
+		this.radar = radar;
+	}
 	
-		public Canon(Robocop robot) {
-			 this.robot = robot;
-			}
-	
-	public void turnCannon() {
-		robot.turnGunLeft(20);
-		robot.fire(1);
-		System.out.println("");  
+	public void shootAtEnemy() {
+		imShooting = radar.getRadarDirection();
+		System.out.println("I'm shooting at " + imShooting);
+		robot.setTurnGunLeft(imShooting);
+		
 	}
 }
 
