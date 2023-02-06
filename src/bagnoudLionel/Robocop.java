@@ -43,13 +43,13 @@ public class Robocop extends AdvancedRobot {
 	}
 	
 	public void onScannedRobot(ScannedRobotEvent event) {
-		radar.setEnemySpotted(true);
+		radar.getRadarDirection();
+		canon.getCanonDirection();
 		canon.shootAtEnemy();
+		tank.move();
 	}
 	
-	public void onBulletHit(BulletHitEvent event) {
-	     out.println("I've been hit " + event.getName() + "!");
-	}
+
 	public void onWin(WinEvent e) {
 		// Victory dance
 	}

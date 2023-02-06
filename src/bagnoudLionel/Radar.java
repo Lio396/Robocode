@@ -22,16 +22,11 @@ public class Radar {
 	}
 	
 	public double getRadarDirection() {
-			if (enemySpotted) {
-				radarDirection = robot.getRadarHeading();
-				enemySpotted = false;
-			}
+			radarDirection = robot.getRadarHeading();	
 			return radarDirection;
+			
 	}
 	
-	public void setEnemySpotted(boolean enemySpotted) {
-		this.enemySpotted = enemySpotted;
-	}
 	
 	public double setRadarDirection (double radarDirection) {
 		this.radarDirection = radarDirection;
